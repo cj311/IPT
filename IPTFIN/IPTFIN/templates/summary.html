@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: url('https://media.gettyimages.com/id/501025547/video/theater-curtain-open-chroma-key-background.jpg?s=640x640&k=20&c=XQ8fvKH-uo2CAbgZmfICMre4AFmLsJkkwj5Hf0LsDDU=') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            max-width: 1200px;
+            background-color: transparent; /* Make background transparent */
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+            width: 100%;
+        }
+        h1 {
+            color: #FFA500;
+            font-size: 2em;
+        }
+        h2 {
+            color: #FFA500;
+        }
+        a {
+            color: #FFBF00; /* Change link color to #FFBF00 */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        p {
+            color: white; /* Keep text color white for better contrast */
+        }
+        .custom-button {
+            background-color: #FF4500;
+            color: #FFA500;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .custom-button:hover {
+            background-color: #FFBF00;
+            color: #000000;
+        }
+        .chart-container {
+            margin: 20px 0;
+        }
+        .chart-container iframe {
+            width: 100%;
+            height: 500px;
+        }
+        .center-text {
+            text-align: center;
+        }
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Remove bullet points from the list */
+        ul {
+            list-style-type: none; /* Removes the bullet points */
+            padding: 0; /* Removes default padding */
+            margin: 0; /* Removes default margin */
+            margin-top: 20px; /* Adds top margin to lower the list */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="center-text">
+            <h1>🍿🎞️🎬 Insights Page 🎥📽️🎦</h1>
+        </div>
+        <div class="center-text">
+            <div class="center-content">
+                <ul>
+                    <li><a href="{{ url_for('show_dataframe', csv_name='HighestGrossers') }}">View Highest Grossers Dataframe</a></li>
+                    <li><a href="{{ url_for('show_dataframe', csv_name='PopularCreativeTypes') }}">View Popular Creative Types Dataframe</a></li>
+                    <li><a href="{{ url_for('show_dataframe', csv_name='AnnualTicketSales') }}">View Annual Ticket Sales Dataframe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="chart-container center-text">
+            {{ highest_grossers_chart_html|safe }}
+            <div class="highest-grossers-summary">
+                <p>From this chart, we can see the highest grossing movie for each year. Walt Disney has had the most hits out of any distributor with having 12 movies that are highest grossers in their respective years. In the following charts, we are going to try to get an idea on why Walt Disney has been so consistent in the recent years by seeing which genre, creative types and age rating are most profitable then ultimately, come up with a combination for a movie that will have the highest chance of succeeding.</p>
+            </div>
+        </div>
+        <div class="chart-container center-text">
+            {{ creative_types_chart_html|safe }}
+            <p>From this chart, we can see that contemporary fiction has the most movies, having 7442 movies, and it is also the highest grossing creative type having a total of $962 billion total gross. On the other hand, we can see that Super Hero movies have the highest average gross with $15.7 billion dollars, however though we can see it might be because of the ratio since it only has 129 movies.</p>
+        </div>
+        <div class="chart-container center-text">
+            {{ highest_grossers_by_distributor_genre_chart_html|safe }}
+            <p>From this chart, we can see the ticket sold by the distributors in each genre. Walt Disney has the most tickets sold out of any distributor with their most popular genre being Action, having sold 514 million tickets. Although Action has the highest peak, Adventure has shown to be the more consistently watched genre across all distributors.</p>
+        </div>
+        <div class="chart-container center-text">
+            {{ highest_grossers_by_distributor_rating_chart_html|safe }}
+            <p>From this chart, we can see the tickets sold by distributors in each age rating. Walt Disney again, has the most tickets sold, with their movies with a PG-13 rating being the highest amount of tickets sold. We can also see that R rated movies are the least popular within distributors as only Sony Pictures has R rated movies. Overall, we can see that PG-13 is the most popular age rating.</p>
+        </div>
+        <div class="chart-container center-text">
+            {{ annual_ticket_sales_chart_html|safe }}
+            <p>From this chart, we can see the annual ticket sales and the amount of tickets sold for each year. We can see in the chart there was a huge drop of sales from 2019 to 2020. This is due to COVID forcing people to stay in their homes during the outbreak which in turn did not allow people to be able to go to the movie theaters even if they wanted to. We can see a slight rise in sales for 2021 but ultimately still, a significant gap of sales between 2019 and 2021.</p>
+        </div>
+    </div>
+</body>
+</html>

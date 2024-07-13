@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hollywood Datasets Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Changed to flex-start */
+            height: 100vh;
+            background: url('https://media.gettyimages.com/id/501025547/video/theater-curtain-open-chroma-key-background.jpg?s=640x640&k=20&c=XQ8fvKH-uo2CAbgZmfICMre4AFmLsJkkwj5Hf0LsDDU=') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            max-width: 1200px;
+            background-color: transparent;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 100px; /* Added margin-top */
+        }
+        h1 {
+            text-align: center;
+            color: #FFA500;
+            font-size: 2em;
+            margin-top: 20px; /* Reduced margin-top */
+        }
+        form {
+            margin-top: 20px; /* Reduced margin-top */
+            position: relative;
+        }
+        input[type="file"] {
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px; /* Reduced margin-top */
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #FFA500; /* Changed text color */
+            font-weight: bold; /* Made text bold */
+        }
+        input[type="submit"] {
+            margin-top: 40px; /* Increased margin-top */
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1em;
+        }
+        input[type="submit"]:hover {
+            background-color: #FFBF00;
+            color: #000000;
+        }
+        .images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px; /* Reduced margin-top */
+        }
+        .images img {
+            max-width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👇Select Files Here</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="files" id="file-upload" multiple>
+            <input type="submit" value="Upload">
+        </form>
+        <div class="images">
+            <img src="https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SL1183_.jpg" alt="Image 1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQGgvfejfns88g2ARje96TBK7MOragRUL5dw&s" alt="Image 2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo1w35AsAv2sISXApGQxf8hD_gO4d_A_ZC3Q&s" alt="Image 3">
+        </div>
+    </div>
+</body>
+</html>

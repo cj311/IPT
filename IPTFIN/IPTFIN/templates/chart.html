@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart</title>
+</head>
+<body>
+    <h1>Chart</h1>
+    <div>{{ chart_html|safe }}</div>
+    <p><a href="{{ url_for('summary') }}">Back to Summary</a></p>
+</body>
+</html>

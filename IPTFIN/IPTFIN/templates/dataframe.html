@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Dataframe View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Changed to flex-start */
+            min-height: 100vh;
+            background: url('https://media.gettyimages.com/id/501025547/video/theater-curtain-open-chroma-key-background.jpg?s=640x640&k=20&c=XQ8fvKH-uo2CAbgZmfICMre4AFmLsJkkwj5Hf0LsDDU=') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            max-width: 1200px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+            width: 100%;
+            color: white; /* Added white text color for better visibility */
+        }
+        h1 {
+            text-align: center;
+            color: #FFA500;
+            font-size: 2em;
+        }
+        a.btn {
+            background-color: #FF4500;
+            color: #FFA500;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a.btn:hover {
+            background-color: #FFBF00;
+            color: #000000;
+        }
+        .table-container {
+            overflow-x: auto; /* Ensures the table is responsive */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #FF4500;
+            color: white;
+        }
+        td {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Dataframe View</h1>
+    <div class="table-container mt-3">
+        {{ dataframe_html|safe }}
+    </div>
+    <a href="{{ url_for('summary') }}" class="btn mt-3">Back to Summary</a>
+</div>
+</body>
+</html>
